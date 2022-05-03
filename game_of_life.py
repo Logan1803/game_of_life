@@ -3,13 +3,14 @@ import turtle
 from turtle import Turtle, Screen
 from defer import return_value
 
+j=0
 k=0
 
 # setting up the screen
 wn=turtle.Screen()
 wn.title("way_of_life")
 wn.bgcolor("black")
-wn.setup(width=810, height= 810)
+wn.setup(width= 800, height= 800)
 wn.tracer(0)
 
 #creating a pen
@@ -50,7 +51,13 @@ def updates(x, y):
 
 # getting the coordinates
 def get_coor(x,y):
+    global k
+    k= int((x+380)/40)
+    global j 
+    j= int((380-y)/40)
     return x, y
+
+
 
 
 class cells(Turtle):
@@ -60,7 +67,7 @@ class cells(Turtle):
         # self.turtle=turtle.Turtle()
         self.speed(0)
 
-        self.shapesize(0.5)
+        # self.shapesize(0.5)
 
         self.color("white")
         # self.hideturtle()
@@ -74,20 +81,20 @@ out=[]
 bi= []
 
 # lists for turtles
-for i in range (0, 40, 1):
+for i in range (0, 20, 1):
     list=[]
     out.append(list)
-    arr=[0 for i in range(40)]
+    arr=[0 for i in range(20)]
     bi.append(arr)
 
 # cell= cells()
 
 # creating the turtles
 for list in out:
-    for i in range (0, 40, 1):
+    for i in range (0, 20, 1):
         # cell= create()
         cell= cells()
-        cell.goto(-395+k*20, 395-(i*20))
+        cell.goto(-380+k*40, 380-(i*40))
         list.append(cell)
         # list[i][k].goto((-390+k*20, 390-(i*20)))
 
@@ -98,7 +105,13 @@ turtle.onscreenclick(updates)
 # turtle.mainloop()
 
 # GAME
-# n= turtle.textinput("Enter the number of cells", "")
+n= int(turtle.numinput("Enter the number of cells", ""))
+# wn.update()
+for i in range(n):
+    turtle.onscreenclick(get_coor)
+    bi[k][j]=1
+    out[k][j].color("red")
+    wn.update()
 
 # for i in range(n):
 
