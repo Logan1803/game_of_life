@@ -22,7 +22,12 @@ pen.penup()
 pen.color("Green")
 pen.goto(-300, 150)
 # giving the instructions
-pen.write("Instructions:\n1.Enter the number of cells you want\nto be alive at start, max 8\n2.Select the boxes and the game will \nstart once you have finished your selection.", align="left", font=("Courier", 18, "normal"))
+text=list("Instructions:\n1.Enter the number of cells you want\nto be alive at start, max 8\n2.Select the boxes and the game will \nstart once you have finished your selection.")
+
+for i in text:
+    pen.write("")
+
+# pen.write("Instructions:\n1.Enter the number of cells you want\nto be alive at start, max 8\n2.Select the boxes and the game will \nstart once you have finished your selection.", align="left", font=("Courier", 18, "normal"))
 wn.update()
 # pen.clear()
 
@@ -47,7 +52,7 @@ wn.update()
 def updates(x, y):
     global pen
     pen.clear()
-    wn.update()
+    wn.tracer(1)
 
 # getting the coordinates
 def get_coor(x,y):
@@ -104,14 +109,23 @@ turtle.onscreenclick(updates)
 
 # turtle.mainloop()
 
-# GAME
-n= int(turtle.numinput("Enter the number of cells", ""))
-# wn.update()
-for i in range(n):
-    turtle.onscreenclick(get_coor)
-    bi[k][j]=1
-    out[k][j].color("red")
-    wn.update()
+# # GAME
+# n= int(turtle.numinput("Enter the number of cells", ""))
+# # wn.update()
+
+# def break_sel()
+
+# selecting turtles
+def tur_sel():
+    y=True
+    while True:
+        turtle.onscreenclick(get_coor)
+        bi[k][j]=1
+        out[k][j].color("red")
+        wn.listen()
+        wn.onkeypress('Return', y= False)
+        wn.update()
+        wn.mainloop()
 
 # for i in range(n):
 
